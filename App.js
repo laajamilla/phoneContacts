@@ -19,20 +19,19 @@ export default function App() {
       if (data.length > 0) {
         //setContact(data[5]);
         //console.log(data[5]);
-        //console.log(data)
+        //console.log(data[5].phoneNumbers[0].number)
         setContact(data.map(cont => ({
           'name': cont.name,
           'id' : cont.id,
-          
+          // miten numerot saa??
+          'phoneNumber' : cont.phoneNumbers
         })))
-
       }
-      
     }
   }
   // console.log(contact.phoneNumbers[0].number);
   // <Text>{contact.name} {contact.phoneNumbers[0].number}</Text>
-  //console.log(contact);
+  console.log(contact);
 
   return (
     <View style={styles.container}>
