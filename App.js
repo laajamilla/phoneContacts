@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import * as Contacts from 'expo-contacts';
-import * as SMS from 'expo-sms';
 
 export default function App() {
 
@@ -17,21 +16,21 @@ export default function App() {
       })
 
       if (data.length > 0) {
+        //console.log(data);
         //setContact(data[5]);
-        //console.log(data[5]);
-        //console.log(data[5].phoneNumbers[0].number)
-        setContact(data.map(cont => ({
-          'name': cont.name,
-          'id' : cont.id,
-          // miten numerot saa??
-          'phoneNumber' : cont.phoneNumbers
-        })))
+        console.log(data[5]);
+        setContact(data);
+      
       }
     }
   }
   // console.log(contact.phoneNumbers[0].number);
-  // <Text>{contact.name} {contact.phoneNumbers[0].number}</Text>
-  console.log(contact);
+
+  console.log(contact[5]);
+
+  // return, puhelinnumerot -> tarkista, onko numeroa, muuten palauta 'no nubmer'
+  // null- arvolla ei ole metodeja
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator#syntax
 
   return (
     <View style={styles.container}>
@@ -40,7 +39,8 @@ export default function App() {
         data={contact}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View><Text>{item.name}</Text></View>
+          <View><Text>{item.name} {item.phoneNumbers ? item.phoneNumbers[0].number : 'no number'}</Text>
+          </View>
         )}
       ></FlatList>
       
