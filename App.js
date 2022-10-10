@@ -30,6 +30,7 @@ export default function App() {
 
   // return, puhelinnumerot -> tarkista, onko numeroa, muuten palauta 'no nubmer'
   // null- arvolla ei ole metodeja
+  // null tai undefined- arvon kautta ei voi viitata mihinkään
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator#syntax
 
   return (
